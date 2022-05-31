@@ -7,7 +7,6 @@ public class SphereMovement : MonoBehaviour
     public GameObject mysphere;
     float movementspeed = 0.1f;
     float jumping = 0.15f;
-   
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +54,38 @@ public class SphereMovement : MonoBehaviour
             mysphere.transform.position = new Vector3(48, 1, 0);
         }
         else if (coll.gameObject.name == "Death6")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death7")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death8")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death9")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death10")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death11")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death12")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death13")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death14")
         {
             mysphere.transform.position = new Vector3(48, 1, 0);
         }
