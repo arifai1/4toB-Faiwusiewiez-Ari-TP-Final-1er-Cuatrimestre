@@ -1,98 +1,78 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SphereMovement : MonoBehaviour
 {
-    public GameObject mysphere;
-    float movementspeed = 0.1f;
-    float jumping = 0.15f;
+    //public GameObject mysphere;
+    public float movementspeed = 0.1f;
+    public float jumping = 0.15f;
+    Vector3 startPos;
+    public GameObject perdiste;
+    public GameObject ganaste;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPos = transform.position;
+        perdiste.SetActive(!perdiste.activeInHierarchy);
+        ganaste.SetActive(!ganaste.activeInHierarchy);
     }
 
     // Update is called once per frame
     void Update()
     {
-        mysphere.transform.position += new Vector3(-movementspeed, 0, 0);
+        transform.position += new Vector3(-movementspeed, 0, 0) * Time.deltaTime;
         if(Input.GetKey(KeyCode.A))
         {
-            mysphere.transform.position += new Vector3(0, 0, -movementspeed);
+            transform.position += new Vector3(0, 0, -movementspeed) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            mysphere.transform.position += new Vector3(0, 0, movementspeed);
+            transform.position += new Vector3(0, 0, movementspeed) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.W))
         {
-            mysphere.transform.position += new Vector3(0, jumping, 0);
+            transform.position += new Vector3(0, jumping, 0) * Time.deltaTime;
         }
     }
 
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.name == "Death1")
+        perdiste.SetActive(false);
+        ganaste.SetActive(false);
+        if (coll.gameObject.name == "Plane")
         {
-            mysphere.transform.position = new Vector3(48, 1, 0);
+            ganaste.SetActive(false);
+            perdiste.SetActive(false);            
         }
-        else if (coll.gameObject.name == "Death2")
+        if (coll.gameObject.name == "Death")
         {
-            mysphere.transform.position = new Vector3(48, 1, 0);
+            perdiste.SetActive(true);
+            transform.position = startPos;
         }
-        else if (coll.gameObject.name == "Death3")
+        if (coll.gameObject.name == "BaseD")
         {
-            mysphere.transform.position = new Vector3(48, 1, 0);
+            perdiste.SetActive(true);
+            transform.position = startPos;
         }
-        else if (coll.gameObject.name == "Death4")
+
+        if (coll.gameObject.name == "Finish")
         {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death5")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death6")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death7")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death8")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death9")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death10")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death11")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death12")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death13")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
-        else if (coll.gameObject.name == "Death14")
-        {
-            mysphere.transform.position = new Vector3(48, 1, 0);
-        }
+            ganaste.SetActive(true);
+            transform.position = startPos;
+        }      
+                
     }
+    
+
+
+
+
     void OnCollisionExit(Collision ex)
     {
-        transform.position = new Vector3(48, 1, 0);
+        //transform.position = startPos;
     }
 
 }
