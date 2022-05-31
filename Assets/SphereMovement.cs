@@ -6,7 +6,7 @@ public class SphereMovement : MonoBehaviour
 {
     public GameObject mysphere;
     float movementspeed = 0.1f;
-    float jumping = 0.2f;
+    float jumping = 0.15f;
    
     // Start is called before the first frame update
     void Start()
@@ -31,4 +31,37 @@ public class SphereMovement : MonoBehaviour
             mysphere.transform.position += new Vector3(0, jumping, 0);
         }
     }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.gameObject.name == "Death1")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death2")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death3")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death4")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death5")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+        else if (coll.gameObject.name == "Death6")
+        {
+            mysphere.transform.position = new Vector3(48, 1, 0);
+        }
+    }
+    void OnCollisionExit(Collision ex)
+    {
+        transform.position = new Vector3(48, 1, 0);
+    }
+
 }
