@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SphereMovement : MonoBehaviour
 {
-    GameObject mysphere;
+    public GameObject mysphere;
     public float movementspeed = 0.1f;
     public float jumping = 0.15f;
     Vector3 startPos;
@@ -26,10 +26,10 @@ public class SphereMovement : MonoBehaviour
     {
         int tiempo = Mathf.FloorToInt(Time.time);
         transform.position += new Vector3(-movementspeed, 0, 0) * Time.deltaTime;
-        while (tiempo > counter)
-        {
-            movementspeed = movementspeed + 0.1f;
-        }
+        //while (tiempo > counter)
+        //{
+        //    movementspeed = movementspeed + 0.1f;
+        //}
         if(Input.GetKey(KeyCode.A))
         {
             transform.position += new Vector3(0, 0, -movementspeed) * Time.deltaTime;
@@ -41,9 +41,10 @@ public class SphereMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += new Vector3(0, jumping, 0) * Time.deltaTime;
-            while (counter <=5)
+            while (counter < 1)
             {
-                Instantiate(mysphere);
+                GameObject clone = Instantiate(mysphere);
+                clone.transform.position = transform.position+new Vector3(0, 0, 1);
                 counter++;
             }
         }
