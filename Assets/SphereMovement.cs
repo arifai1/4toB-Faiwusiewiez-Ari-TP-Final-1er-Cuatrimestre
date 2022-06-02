@@ -11,7 +11,8 @@ public class SphereMovement : MonoBehaviour
     Vector3 startPos;
     public GameObject perdiste;
     public GameObject ganaste;
-    int counter = 0;     
+    int counter = 0;
+    GameObject clone;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,10 +44,11 @@ public class SphereMovement : MonoBehaviour
             transform.position += new Vector3(0, jumping, 0) * Time.deltaTime;
             while (counter < 1)
             {
-                GameObject clone = Instantiate(mysphere);
+                clone = Instantiate(mysphere);
                 clone.transform.position = transform.position+new Vector3(0, 0, 1);
                 counter++;
             }
+            Destroy(clone, 2);
         }
     }
 

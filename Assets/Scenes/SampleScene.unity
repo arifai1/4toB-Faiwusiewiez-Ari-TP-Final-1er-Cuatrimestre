@@ -1973,6 +1973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f65265cf109b514aaab26daefd7a805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mysphere: {fileID: 1862846257}
   movementspeed: 4
   jumping: 10
   perdiste: {fileID: 1461381325}
