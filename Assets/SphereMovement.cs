@@ -28,7 +28,6 @@ public class SphereMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         jumpp = true;
     }
-
     // Update is called once per frame
     void Update()
     {
