@@ -5,21 +5,28 @@ using UnityEngine.UI;
 
 public class SphereMovement : MonoBehaviour
 {
-    public GameObject mysphere;
+    public int cantidaddeIns;
+    public float TimeToIns;
+    public float waitingtime;
     public float movementspeed = 0.1f;
-    public float jumping = 0.15f;
-    Vector3 startPos;
+    public float jumping;
+    public GameObject mysphere;
     public GameObject perdiste;
     public GameObject ganaste;
-    int counter = 0;
     GameObject clone;
+    Vector3 startPos;
+    Rigidbody rb;
+    bool jumpp;
+
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
         perdiste.SetActive(!perdiste.activeInHierarchy);
         ganaste.SetActive(!ganaste.activeInHierarchy);
-        
+        rb = GetComponent<Rigidbody>();
+        jumpp = true;
+        Instantiate(Death);
     }
 
     // Update is called once per frame
@@ -27,11 +34,11 @@ public class SphereMovement : MonoBehaviour
     {
         int tiempo = Mathf.FloorToInt(Time.time);
         transform.position += new Vector3(-movementspeed, 0, 0) * Time.deltaTime;
-        //while (tiempo > counter)
-        //{
-        //    movementspeed = movementspeed + 0.1f;
-        //}
-        if(Input.GetKey(KeyCode.A))
+        //clone = Instantiate(mysphere);
+        //clone.transform.position = transform.position + new Vector3(0, 0, 1);
+        movementspeed = movementspeed + 0.1f;   
+
+        if (Input.GetKey(KeyCode.A))
         {
             transform.position += new Vector3(0, 0, -movementspeed) * Time.deltaTime;
         }
@@ -39,17 +46,13 @@ public class SphereMovement : MonoBehaviour
         {
             transform.position += new Vector3(0, 0, movementspeed) * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && jumpp)
         {
-            transform.position += new Vector3(0, jumping, 0) * Time.deltaTime;
-            while (counter < 1)
-            {
-                clone = Instantiate(mysphere);
-                clone.transform.position = transform.position+new Vector3(0, 0, 1);
-                counter++;
-            }
-            Destroy(clone, 2);
+            rb.AddForce(Vector3.up * jumping, ForceMode.Impulse);
+            jumpp = false;
+
         }
+
     }
 
     void OnCollisionEnter(Collision coll)
@@ -59,34 +62,45 @@ public class SphereMovement : MonoBehaviour
         if (coll.gameObject.name == "Plane")
         {
             ganaste.SetActive(false);
-            perdiste.SetActive(false);            
+            perdiste.SetActive(false);
         }
         if (coll.gameObject.name == "Death")
         {
             perdiste.SetActive(true);
             transform.position = startPos;
+            movementspeed = 0.1f;
         }
         if (coll.gameObject.name == "BaseD")
         {
             perdiste.SetActive(true);
             transform.position = startPos;
+            movementspeed = 0.1f;
         }
-
         if (coll.gameObject.name == "Finish")
         {
             ganaste.SetActive(true);
             transform.position = startPos;
-        }      
-                
+            movementspeed = 0.1f;
+        }
+        if (coll.gameObject.tag == "Ground")
+        {
+            jumpp = true;
+        }
     }
-    
-
-
-
-
     void OnCollisionExit(Collision ex)
     {
-        //transform.position = startPos;
+     //transform.position = startPos;
+    }
+        //public void CloneObject()
+        //{
+        //    int i = 1;
+        //    while (i <= cantidaddeIns)
+        //    {
+        //        Instantiate(mysphere);
+        //        i++;
+        //    }
+        //}
+
     }
 
-}
+
