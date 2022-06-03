@@ -17,6 +17,7 @@ public class SphereMovement : MonoBehaviour
     Vector3 startPos;
     Rigidbody rb;
     bool jumpp;
+    //public GameObject rain;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,6 @@ public class SphereMovement : MonoBehaviour
         ganaste.SetActive(!ganaste.activeInHierarchy);
         rb = GetComponent<Rigidbody>();
         jumpp = true;
-        Instantiate(Death);
     }
 
     // Update is called once per frame
@@ -50,9 +50,7 @@ public class SphereMovement : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumping, ForceMode.Impulse);
             jumpp = false;
-
         }
-
     }
 
     void OnCollisionEnter(Collision coll)
@@ -79,6 +77,7 @@ public class SphereMovement : MonoBehaviour
         if (coll.gameObject.name == "Finish")
         {
             ganaste.SetActive(true);
+            //Instantiate(ganaste);
             transform.position = startPos;
             movementspeed = 0.1f;
         }
