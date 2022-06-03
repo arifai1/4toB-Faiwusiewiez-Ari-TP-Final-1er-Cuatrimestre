@@ -8,7 +8,7 @@ public class SphereMovement : MonoBehaviour
     public int cantidaddeIns;
     public float TimeToIns;
     public float waitingtime;
-    public float movementspeed = 0.1f;
+    public float movementspeed = 0.01f;
     public float jumping;
     public GameObject mysphere;
     public GameObject perdiste;
@@ -17,6 +17,7 @@ public class SphereMovement : MonoBehaviour
     Vector3 startPos;
     Rigidbody rb;
     bool jumpp;
+    float tiempoMuerte;
 
     //public GameObject rain;
 
@@ -32,11 +33,12 @@ public class SphereMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         int tiempo = Mathf.FloorToInt(Time.time);
         transform.position += new Vector3(-movementspeed, 0, 0) * Time.deltaTime;
         //clone = Instantiate(mysphere);
         //clone.transform.position = transform.position + new Vector3(0, 0, 1);
-        movementspeed = movementspeed + 0.1f;   
+        movementspeed = movementspeed + 0.01f;   
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -66,20 +68,31 @@ public class SphereMovement : MonoBehaviour
         {
             perdiste.SetActive(true);
             transform.position = startPos;
-            movementspeed = 0.1f;
+            movementspeed = 0.01f;
+            tiempoMuerte = Time.time;
         }
         if (coll.gameObject.name == "BaseD")
         {
             perdiste.SetActive(true);
             transform.position = startPos;
-            movementspeed = 0.1f;
+            movementspeed = 0.01f;
         }
         if (coll.gameObject.name == "Finish")
         {
             ganaste.SetActive(true);
-            //Instantiate(ganaste);
             transform.position = startPos;
-            movementspeed = 0.1f;
+            clone = Instantiate(mysphere);
+            clone.transform.position += new Vector3(0, 0, -movementspeed) * Time.deltaTime;
+            movementspeed = 0.01f;
+            if (clone.gameObject.name == "Death")
+            {
+                perdiste.SetActive(false);
+                //mysphere.transform.position = startPos;
+                //clone.transform.position = startPos;
+                movementspeed = 0.01f;
+                //movementspeed = movementspeed);
+                Destroy(clone);               
+            }
         }
         if (coll.gameObject.tag == "Ground")
         {
