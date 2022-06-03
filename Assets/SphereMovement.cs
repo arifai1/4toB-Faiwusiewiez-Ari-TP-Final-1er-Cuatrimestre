@@ -17,6 +17,7 @@ public class SphereMovement : MonoBehaviour
     Vector3 startPos;
     Rigidbody rb;
     bool jumpp;
+
     //public GameObject rain;
 
     // Start is called before the first frame update
