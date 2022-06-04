@@ -10,6 +10,7 @@ public class SphereMovement : MonoBehaviour
     public float waitingtime;
     public float movementspeed = 0.01f;
     public float jumping;
+    float tiempoMuerte = 0;
     public GameObject mysphere;
     public GameObject perdiste;
     public GameObject ganaste;
@@ -17,7 +18,7 @@ public class SphereMovement : MonoBehaviour
     Vector3 startPos;
     Rigidbody rb;
     bool jumpp;
-    float tiempoMuerte = 0;
+    
 
     //public GameObject rain;
 
@@ -107,7 +108,7 @@ public class SphereMovement : MonoBehaviour
             movementspeed = 0.01f;
             tiempoMuerte = Time.time;
             int i = 0;
-            while (i <= cantidaddeIns)
+            while (i <= cantidaddeIns)   //se intenta hacer el instantiate cuando vuelve al principio, y que cuando una pelotita pierda, pierdan todas, y vuelvan al principio
             {
                 Instantiate(mysphere);
                 i++;
