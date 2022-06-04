@@ -1701,10 +1701,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cantidaddeIns: 2
-  TimeToIns: 3
-  waitingtime: 3
   movementspeed: 0.2
-  jumping: 6
+  jumping: 5.5
   mysphere: {fileID: 1862846257}
   perdiste: {fileID: 1461381325}
   ganaste: {fileID: 1613081342}

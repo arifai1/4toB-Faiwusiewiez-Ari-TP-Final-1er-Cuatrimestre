@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class SphereMovement : MonoBehaviour
 {
     public int cantidaddeIns;
-    public float TimeToIns;
-    public float waitingtime;
+    //public float TimeToIns;
+    //public float waitingtime;
     public float movementspeed = 0.01f;
     public float jumping;
     float tiempoMuerte = 0;
@@ -18,7 +18,7 @@ public class SphereMovement : MonoBehaviour
     Vector3 startPos;
     Rigidbody rb;
     bool jumpp;
-    
+
     //public GameObject rain;
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class SphereMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > tiempoMuerte+3)
+        if (Time.time > tiempoMuerte + 3)
         {
             int tiempo = Mathf.FloorToInt(Time.time);
             transform.position += new Vector3(-movementspeed, 0, 0) * Time.deltaTime;
@@ -55,7 +55,7 @@ public class SphereMovement : MonoBehaviour
                 rb.AddForce(Vector3.up * jumping, ForceMode.Impulse);
                 jumpp = false;
             }
-        }        
+        }
     }
 
     void OnCollisionEnter(Collision coll)
@@ -106,11 +106,14 @@ public class SphereMovement : MonoBehaviour
             transform.position = startPos;
             movementspeed = 0.01f;
             tiempoMuerte = Time.time;
-            int i = 0;
-            while (i <= cantidaddeIns)   //se intenta hacer el instantiate cuando vuelve al principio, y que cuando una pelotita pierda, pierdan todas, y vuelvan al principio
-            {
-                Instantiate(mysphere);
-                i++;
+
+            //int i = 0;
+            //while (i <= cantidaddeIns)   //se intenta hacer el instantiate cuando vuelve al principio, y que cuando una pelotita pierda, pierdan todas, y vuelvan al principio.
+            //{
+            //  Instantiate(mysphere);
+            //  i++;
+            //}
+
             //    if (coll.gameObject.name == "Plane")
             //{
             //    //int i = 0;
@@ -119,24 +122,29 @@ public class SphereMovement : MonoBehaviour
             //    //    Instantiate(mysphere);
             //    //    i++;
             //    }
-                    if (coll.gameObject.name == "Death")
-                    {
-                        perdiste.SetActive(true);
-                        Destroy(clone);
-                        Destroy(mysphere);
-                        transform.position = startPos;
-                    }
-                    else if (coll.gameObject.name == "BaseD")
-                    {
-                        perdiste.SetActive(true);
-                        Destroy(clone);
-                        Destroy(mysphere);
-                        transform.position = startPos;
-                    }
-                
-            }
-               // ganaste.SetActive(true);
+
+            if (coll.gameObject.name == "Death")
+                {
+                    perdiste.SetActive(true);
+                    ganaste.SetActive(false);
+                    Destroy(clone);
+                    Destroy(mysphere);
+                    transform.position = startPos;
+                }
+                else if (coll.gameObject.name == "BaseD")
+                {
+                    perdiste.SetActive(true);
+                    ganaste.SetActive(false);
+                    Destroy(clone);
+                    Destroy(mysphere);
+                    transform.position = startPos;
+                }
+
+            //}
             
+            
+            // ganaste.SetActive(true);
+
             //ganaste.SetActive(true);
             //perdiste.SetActive(false);
             //transform.position = startPos;
@@ -160,18 +168,18 @@ public class SphereMovement : MonoBehaviour
     }
     void OnCollisionExit(Collision ex)
     {
-     //transform.position = startPos;
+        //transform.position = startPos;
     }
-        //public void CloneObject()
-        //{
-        //    int i = 1;
-        //    while (i <= cantidaddeIns)
-        //    {
-        //        Instantiate(mysphere);
-        //        i++;
-        //    }
-        //}
+    //public void CloneObject()
+    //{
+    //    int i = 1;
+    //    while (i <= cantidaddeIns)
+    //    {
+    //        Instantiate(mysphere);
+    //        i++;
+    //    }
+    //}
 
-    }
+}
 
 
