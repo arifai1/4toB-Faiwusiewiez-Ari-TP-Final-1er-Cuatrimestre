@@ -37,7 +37,6 @@ public class SphereMovement : MonoBehaviour
         {
             int tiempo = Mathf.FloorToInt(Time.time);
             transform.position += new Vector3(-movementspeed, 0, 0) * Time.deltaTime;
-            
             //clone = Instantiate(mysphere);
             //clone.transform.position = transform.position + new Vector3(0, 0, 1);
             movementspeed = movementspeed + 0.01f;
@@ -61,11 +60,11 @@ public class SphereMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.name == "Plane")
-        {
-            Destroy(clone);
-            //ganaste.SetActive(true);            
-        }
+        //if (coll.gameObject.name == "Plane")
+        //{
+        //    Destroy(clone);
+        //    //ganaste.SetActive(true);            
+        //}
         if (coll.gameObject.name == "Death")
         {
             ganaste.SetActive(false);
@@ -79,7 +78,7 @@ public class SphereMovement : MonoBehaviour
                 perdiste.SetActive(true);
             }
         }
-        if (coll.gameObject.name == "BaseD")
+        if (coll.gameObject.name == "BaseD") //cuando colisiona con la base verde, se muestra el cartel "Perdiste" por 3 segundos y luego comienza el juego.
         {
             //perdiste.SetActive(true);
             //transform.position = startPos;
@@ -100,18 +99,44 @@ public class SphereMovement : MonoBehaviour
                 perdiste.SetActive(true);
             }
         }
-        if (coll.gameObject.name == "Finish")
+        if (coll.gameObject.name == "Finish") //cuando colisiona con la pared final, se muestra el cartel "Ganaste" por 3 segundos y luego comienza el juego.
         {
             ganaste.SetActive(true);
             perdiste.SetActive(false);
             transform.position = startPos;
             movementspeed = 0.01f;
             tiempoMuerte = Time.time;
-            if (coll.gameObject.name == "Plane")
+            int i = 0;
+            while (i <= cantidaddeIns)
             {
-                Destroy(clone);
-                ganaste.SetActive(true);
+                Instantiate(mysphere);
+                i++;
+            //    if (coll.gameObject.name == "Plane")
+            //{
+            //    //int i = 0;
+            //    //while (i <= cantidaddeIns)
+            //    //{
+            //    //    Instantiate(mysphere);
+            //    //    i++;
+            //    }
+                    if (coll.gameObject.name == "Death")
+                    {
+                        perdiste.SetActive(true);
+                        Destroy(clone);
+                        Destroy(mysphere);
+                        transform.position = startPos;
+                    }
+                    else if (coll.gameObject.name == "BaseD")
+                    {
+                        perdiste.SetActive(true);
+                        Destroy(clone);
+                        Destroy(mysphere);
+                        transform.position = startPos;
+                    }
+                
             }
+               // ganaste.SetActive(true);
+            
             //ganaste.SetActive(true);
             //perdiste.SetActive(false);
             //transform.position = startPos;
