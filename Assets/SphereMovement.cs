@@ -14,7 +14,10 @@ public class SphereMovement : MonoBehaviour
     public GameObject mysphere;
     public GameObject perdiste;
     public GameObject ganaste;
+    public GameObject CongratulationsIns;
+    public GameObject CongratulationsIns2;
     GameObject clone;
+    GameObject clone2;
     Vector3 startPos;
     Rigidbody rb;
     bool jumpp;
@@ -74,7 +77,8 @@ public class SphereMovement : MonoBehaviour
             tiempoMuerte = Time.time;
             if (coll.gameObject.name == "Plane")
             {
-                Destroy(clone);
+                Destroy(clone, 3);
+                Destroy(clone2, 3);
                 perdiste.SetActive(true);
             }
         }
@@ -95,7 +99,10 @@ public class SphereMovement : MonoBehaviour
             tiempoMuerte = Time.time;
             if (coll.gameObject.name == "Plane")
             {
-                Destroy(clone);
+                //Destroy(CongratulationsIns);
+                //Destroy(CongratulationsIns2);
+                Destroy(clone, 3);
+                Destroy(clone2, 3);
                 perdiste.SetActive(true);
             }
         }
@@ -104,30 +111,45 @@ public class SphereMovement : MonoBehaviour
             ganaste.SetActive(true);
             perdiste.SetActive(false);
             transform.position = startPos;
+            for (int counter = 1; counter < cantidaddeIns; counter++)
+            {
+                clone = Instantiate(CongratulationsIns);
+                clone2 = Instantiate(CongratulationsIns2);
+                //Destroy(CongratulationsIns);
+                //Destroy(CongratulationsIns2);
+                Destroy(clone, 3);
+                Destroy(clone2, 3);
+            }
             movementspeed = 0.01f;
             tiempoMuerte = Time.time;
 
-            //int i = 0;
-            //while (i <= cantidaddeIns)   //se intenta hacer el instantiate cuando vuelve al principio, y que cuando una pelotita pierda, pierdan todas, y vuelvan al principio.
-            //{
-            //  Instantiate(mysphere);
-            //  i++;
-            //}
+            
+            
+                
+                //while (i <= cantidaddeIns)   //se intenta hacer el instantiate cuando vuelve al principio, y que cuando una pelotita pierda, pierdan todas, y vuelvan al principio.
+                //{
+                //  Instantiate(CongratulationIns);
+                //  i++;
+                //}
+                //Destroy(clone, 2);
 
-            //    if (coll.gameObject.name == "Plane")
-            //{
-            //    //int i = 0;
-            //    //while (i <= cantidaddeIns)
-            //    //{
-            //    //    Instantiate(mysphere);
-            //    //    i++;
-            //    }
+                //    if (coll.gameObject.name == "Plane")
+                //{
+                //    //int i = 0;
+                //    //while (i <= cantidaddeIns)
+                //    //{
+                //    //    Instantiate(mysphere);
+                //    //    i++;
+                //    }
 
-            if (coll.gameObject.name == "Death")
+                if (coll.gameObject.name == "Death")
                 {
                     perdiste.SetActive(true);
                     ganaste.SetActive(false);
+                   // Destroy(CongratulationsIns);
+                   // Destroy(CongratulationsIns2);
                     Destroy(clone);
+                    Destroy(clone2);
                     Destroy(mysphere);
                     transform.position = startPos;
                 }
@@ -135,7 +157,10 @@ public class SphereMovement : MonoBehaviour
                 {
                     perdiste.SetActive(true);
                     ganaste.SetActive(false);
-                    Destroy(clone);
+                    //Destroy(CongratulationsIns);
+                    //Destroy(CongratulationsIns2);
+                    Destroy(clone, 3);
+                    Destroy(clone2, 3);
                     Destroy(mysphere);
                     transform.position = startPos;
                 }
