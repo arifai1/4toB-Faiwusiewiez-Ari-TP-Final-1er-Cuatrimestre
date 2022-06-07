@@ -2055,7 +2055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cantidaddeIns: 5
-  movementspeed: 0.25
+  movementspeed: 0.3
   jumping: 5.5
   mysphere: {fileID: 1862846257}
   perdiste: {fileID: 1461381325}
