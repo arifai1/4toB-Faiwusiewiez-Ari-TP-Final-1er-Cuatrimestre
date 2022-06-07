@@ -19,6 +19,8 @@ public class SphereMovement : MonoBehaviour
     GameObject clone;
     GameObject clone2;
     Vector3 startPos;
+    Vector3 startFire;
+    Vector3 startFire2;
     Rigidbody rb;
     bool jumpp;
 
@@ -28,6 +30,8 @@ public class SphereMovement : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
+        startFire = CongratulationsIns.transform.position;
+        startFire2 = CongratulationsIns2.transform.position;
         perdiste.SetActive(!perdiste.activeInHierarchy);
         ganaste.SetActive(!ganaste.activeInHierarchy);
         rb = GetComponent<Rigidbody>();
@@ -79,6 +83,8 @@ public class SphereMovement : MonoBehaviour
             {
                 Destroy(clone, 3);
                 Destroy(clone2, 3);
+                CongratulationsIns.transform.position = startFire;
+                CongratulationsIns2.transform.position = startFire2;
                 perdiste.SetActive(true);
             }
         }
@@ -103,6 +109,8 @@ public class SphereMovement : MonoBehaviour
                 //Destroy(CongratulationsIns2);
                 Destroy(clone, 3);
                 Destroy(clone2, 3);
+                CongratulationsIns.transform.position = startFire;
+                CongratulationsIns2.transform.position = startFire2;
                 perdiste.SetActive(true);
             }
         }
@@ -119,6 +127,8 @@ public class SphereMovement : MonoBehaviour
                 //Destroy(CongratulationsIns2);
                 Destroy(clone, 3);
                 Destroy(clone2, 3);
+                CongratulationsIns.transform.position = startFire;
+                CongratulationsIns2.transform.position = startFire2;
             }
             movementspeed = 0.01f;
             tiempoMuerte = Time.time;
@@ -150,6 +160,8 @@ public class SphereMovement : MonoBehaviour
                    // Destroy(CongratulationsIns2);
                     Destroy(clone);
                     Destroy(clone2);
+                    CongratulationsIns.transform.position = startFire;
+                    CongratulationsIns2.transform.position = startFire2;
                     Destroy(mysphere);
                     transform.position = startPos;
                 }
@@ -161,6 +173,8 @@ public class SphereMovement : MonoBehaviour
                     //Destroy(CongratulationsIns2);
                     Destroy(clone, 3);
                     Destroy(clone2, 3);
+                    CongratulationsIns.transform.position = startFire;
+                    CongratulationsIns2.transform.position = startFire2;
                     Destroy(mysphere);
                     transform.position = startPos;
                 }
