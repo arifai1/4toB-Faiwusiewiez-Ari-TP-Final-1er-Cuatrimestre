@@ -23,6 +23,8 @@ public class SphereMovement : MonoBehaviour
     Vector3 startFire2;
     Rigidbody rb;
     bool jumpp;
+    public AudioClip sound1;
+    AudioSource sound2;
 
     //public GameObject rain;
 
@@ -36,6 +38,7 @@ public class SphereMovement : MonoBehaviour
         ganaste.SetActive(!ganaste.activeInHierarchy);
         rb = GetComponent<Rigidbody>();
         jumpp = true;
+        sound2 = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -61,6 +64,8 @@ public class SphereMovement : MonoBehaviour
             {
                 rb.AddForce(Vector3.up * jumping, ForceMode.Impulse);
                 jumpp = false;
+                sound2.clip = sound1;
+                sound2.Play();
             }
         }
     }
