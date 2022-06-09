@@ -1152,7 +1152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -106, y: 95}
+  m_AnchoredPosition: {x: -106, y: 157}
   m_SizeDelta: {x: 192.36838, y: 69.21547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1461381327
@@ -1411,8 +1411,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -104.9, y: 95}
-  m_SizeDelta: {x: 209.79745, y: 82.28729}
+  m_AnchoredPosition: {x: -112.7, y: 159}
+  m_SizeDelta: {x: 194.12607, y: 76.140625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1613081344
 MonoBehaviour:
@@ -1434,7 +1434,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cantidaddeIns: 5
-  movementspeed: 0.3
+  movementspeed: 0.5
   jumping: 5.5
   mysphere: {fileID: 1862846257}
   perdiste: {fileID: 1461381325}
@@ -2064,6 +2064,7 @@ MonoBehaviour:
   CongratulationsIns: {fileID: 1828011590}
   CongratulationsIns2: {fileID: 207454040}
   sound1: {fileID: 8300000, guid: 78e7e63c419f5ac4f84901b48ea8bcbf, type: 3}
+  explosion: {fileID: 8300000, guid: b6c644e4d0bf448478a58de3b32c4e37, type: 3}
 --- !u!82 &1862846264
 AudioSource:
   m_ObjectHideFlags: 0

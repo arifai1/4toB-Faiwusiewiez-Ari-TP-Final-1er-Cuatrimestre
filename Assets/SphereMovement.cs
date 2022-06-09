@@ -8,7 +8,7 @@ public class SphereMovement : MonoBehaviour
     public int cantidaddeIns;
     //public float TimeToIns;
     //public float waitingtime;
-    public float movementspeed = 0.01f;
+    public float movementspeed = 0.03f;
     public float jumping;
     float tiempoMuerte = 0;
     public GameObject mysphere;
@@ -25,6 +25,8 @@ public class SphereMovement : MonoBehaviour
     bool jumpp;
     public AudioClip sound1;
     AudioSource sound2;
+    public AudioClip explosion;
+    AudioSource sound3;
 
     //public GameObject rain;
 
@@ -39,6 +41,7 @@ public class SphereMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         jumpp = true;
         sound2 = GetComponent<AudioSource>();
+        sound3 = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -128,6 +131,8 @@ public class SphereMovement : MonoBehaviour
             {
                 clone = Instantiate(CongratulationsIns);
                 clone2 = Instantiate(CongratulationsIns2);
+                sound3.clip = explosion;
+                sound3.Play();
                 //Destroy(CongratulationsIns);
                 //Destroy(CongratulationsIns2);
                 Destroy(clone, 3);
