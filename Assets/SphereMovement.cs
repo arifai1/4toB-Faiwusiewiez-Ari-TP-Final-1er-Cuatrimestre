@@ -129,10 +129,11 @@ public class SphereMovement : MonoBehaviour
             transform.position = startPos;
             for (int counter = 1; counter < cantidaddeIns; counter++)
             {
-                clone = Instantiate(CongratulationsIns);
-                clone2 = Instantiate(CongratulationsIns2);
                 sound3.clip = explosion;
                 sound3.Play();
+                clone = Instantiate(CongratulationsIns);
+                clone2 = Instantiate(CongratulationsIns2);
+                
                 //Destroy(CongratulationsIns);
                 //Destroy(CongratulationsIns2);
                 Destroy(clone, 3);
