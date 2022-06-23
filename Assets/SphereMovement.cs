@@ -75,7 +75,6 @@ public class SphereMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
-        Debug.Log(coll.gameObject.name);
         //if (coll.gameObject.name == "Plane")
         //{
         //    Destroy(clone);
