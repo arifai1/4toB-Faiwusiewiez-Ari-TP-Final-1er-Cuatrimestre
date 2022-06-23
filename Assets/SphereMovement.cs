@@ -75,6 +75,7 @@ public class SphereMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
+        Debug.Log(coll.gameObject.name);
         //if (coll.gameObject.name == "Plane")
         //{
         //    Destroy(clone);
@@ -89,10 +90,11 @@ public class SphereMovement : MonoBehaviour
             tiempoMuerte = Time.time;
             if (coll.gameObject.name == "Plane")
             {
-                Destroy(clone, 3);
-                Destroy(clone2, 3);
                 CongratulationsIns.transform.position = startFire;
                 CongratulationsIns2.transform.position = startFire2;
+                Destroy(clone, 3);
+                Destroy(clone2, 3);
+                
                 perdiste.SetActive(true);
             }
         }
